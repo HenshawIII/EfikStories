@@ -10,7 +10,7 @@ export default function Intro() {
       <div ref={introRef} className="w-full flex flex-col md:flex-row md:items-center md:gap-10 gap-6">
         {/* Text (order changes so the video sits below on mobile) */}
         <p className="order-1 md:order-2 w-full text-lg md:text-3xl max-w-3xl text-foreground leading-relaxed mx-auto md:mx-0 md:ml-auto">
-          <span className="font-bold text-5xl">EFIK Stories</span> is a visual history project documenting Efik power, memory, and culture through cinematic storytelling. Each episode draws from archival records, oral traditions, and historical research to reconstruct moments often left out of dominant historical narratives.
+          <span className="font-bold text-3xl md:text-5xl">EFIK Stories</span> is a visual history project documenting Efik power, memory, and culture through cinematic storytelling. Each episode draws from archival records, oral traditions, and historical research to reconstruct moments often left out of dominant historical narratives.
         </p>
 
         {/* Video */}

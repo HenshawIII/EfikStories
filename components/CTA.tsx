@@ -23,7 +23,7 @@ export default function CTA() {
       >
         {/* CTA Copy */}
         <div className="lg:w-[42%] lg:shrink-0 gap-8 flex flex-col justify-start items-start">
-          <h2 className="text-5xl md:text-6xl font-heading text-primary mt-0! -translate-y-2!">
+          <h2 className="text-3xl md:text-6xl font-heading text-primary mt-0! -translate-y-2!">
             Join the Story
           </h2>
           <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">

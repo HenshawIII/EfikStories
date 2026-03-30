@@ -147,7 +147,7 @@ export default function VideoGallery({ videos = defaultVideos, shorts = defaultS
       <div className="w-full flex flex-col gap-12 max-w-full md:px-12! px-6! items-center mx-auto overflow-x-hidden">
         {/* Main Episodes Section */}
         <div className="w-full min-w-0">
-        <h2 className="text-5xl md:text-5xl font-bold text-foreground text-left ">
+        <h2 className="text-3xl md:text-5xl font-bold text-foreground text-left ">
           Episodes
         </h2>
         </div>
@@ -192,7 +192,7 @@ export default function VideoGallery({ videos = defaultVideos, shorts = defaultS
 
         {/* Shorts Section */}
         <div ref={shortsRef} className="w-full min-w-0 mt-24 md:mt-24!">
-          <h2 className="text-5xl md:text-5xl font-bold text-foreground text-left mb-8 md:mb-12!">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground text-left mb-8! md:mb-12!">
             Shorts
           </h2>
           <div className="relative">

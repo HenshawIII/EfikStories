@@ -155,7 +155,7 @@ export default function Hero({ backgroundImageDesktop, backgroundImageMobile }: 
             <img
               src="/HeroText.png"
               alt="Efik Stories"
-              className="w-[220px] sm:w-[280px] md:w-[280px] lg:w-[280px] h-auto object-contain"
+              className="w-[200px] sm:w-[200px] md:w-[280px] lg:w-[280px] h-auto object-contain"
             />
           </div>
         </div>
