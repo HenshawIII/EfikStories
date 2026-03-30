@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { useStaggerFadeIn } from '@/lib/animations';
 import { Image as ImageType } from '@/types/content';
 
@@ -243,13 +243,14 @@ export default function ImageGallery({ images = defaultImages }: ImageGalleryPro
           role="dialog"
           aria-modal="true"
           aria-label="Image gallery viewer"
-          onMouseDown={(e) => {
-            if (e.target === e.currentTarget) close();
-          }}
+          onMouseDown={() => close()}
         >
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
-          <div className="relative w-full max-w-5xl">
+          <div
+            className="relative w-full max-w-5xl"
+            onMouseDown={(e) => e.stopPropagation()}
+          >
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black/20">
               {/* Arrows */}
               <button
@@ -274,9 +275,9 @@ export default function ImageGallery({ images = defaultImages }: ImageGalleryPro
                 type="button"
                 onClick={close}
                 aria-label="Close"
-                className="absolute right-4 top-4 z-10 rounded-full bg-black/40 hover:bg-black/60 border border-white/10 p-3 transition-colors"
+                className="absolute right-4 top-4 z-20 h-14 w-14 rounded-full bg-black/75 hover:bg-black/95 border-2 border-white/40 shadow-xl shadow-black/40 backdrop-blur-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/80 inline-flex items-center justify-center"
               >
-                <span className="text-secondary text-lg font-heading leading-none">×</span>
+                <X className="h-7 w-7 text-secondary" strokeWidth={2.8} aria-hidden />
               </button>
 
               <div className="aspect-16/10 md:aspect-video relative">
