@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
 :root {
+  --primary: #044997;
+  --secondary: #F8EDCF;
   --background: #ffffff;
   --foreground: #171717;
 }
 
 @theme inline {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-family-body: var(--font-libertinus-regular), sans-serif;
+  --font-family-heading: var(--font-libertinus-bold), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-libertinus-regular), sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-libertinus-bold), sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.font-heading {
+  font-family: var(--font-libertinus-bold), sans-serif;
+}
+
+/* Hide scrollbar while allowing scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Hero strip marquee */
+@keyframes hero-strip-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes hero-strip-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.hero-strip-track {
+  display: flex;
+  width: 200%;
+  height: 100%;
+}
+
+.hero-strip-track-left {
+  animation: hero-strip-left 28s linear infinite;
+}
+
+.hero-strip-track-right {
+  animation: hero-strip-right 28s linear infinite;
+}
+
+.hero-strip-segment {
+  flex: 0 0 50%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-strip-track-left,
+  .hero-strip-track-right {
+    animation: none;
+  }
 }
