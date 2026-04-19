@@ -7,12 +7,52 @@ interface FooterProps {
   socialLinks?: SocialLink[];
 }
 
+function envUrl(value: string | undefined, fallback: string): string {
+  const v = value?.trim();
+  return v && v.length > 0 ? v : fallback;
+}
+
 const defaultSocialLinks: SocialLink[] = [
-  { platform: 'instagram', url: 'https://instagram.com', label: 'Instagram' },
-  { platform: 'x', url: 'https://x.com', label: 'X (Twitter)' },
-  { platform: 'tiktok', url: 'https://tiktok.com', label: 'TikTok' },
-  { platform: 'facebook', url: 'https://facebook.com', label: 'Facebook' },
-  { platform: 'youtube', url: 'https://youtube.com', label: 'YouTube' },
+  {
+    platform: 'instagram',
+    url: envUrl(
+      process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM_URL,
+      'https://instagram.com'
+    ),
+    label: 'Instagram',
+  },
+  {
+    platform: 'x',
+    url: envUrl(
+      process.env.NEXT_PUBLIC_X_URL ?? process.env.NEXT_PUBLIC_SOCIAL_X_URL,
+      'https://x.com'
+    ),
+    label: 'X (Twitter)',
+  },
+  {
+    platform: 'tiktok',
+    url: envUrl(
+      process.env.NEXT_PUBLIC_TIKTOK_URL ?? process.env.NEXT_PUBLIC_SOCIAL_TIKTOK_URL,
+      'https://tiktok.com'
+    ),
+    label: 'TikTok',
+  },
+  {
+    platform: 'facebook',
+    url: envUrl(
+      process.env.NEXT_PUBLIC_FACEBOOK_URL ?? process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK_URL,
+      'https://facebook.com'
+    ),
+    label: 'Facebook',
+  },
+  {
+    platform: 'youtube',
+    url: envUrl(
+      process.env.NEXT_PUBLIC_YOUTUBE_URL ?? process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE_URL,
+      'https://youtube.com'
+    ),
+    label: 'YouTube',
+  },
 ];
 
 function SocialIcon({ platform }: { platform: SocialLink['platform'] }) {

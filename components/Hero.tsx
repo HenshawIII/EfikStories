@@ -148,13 +148,14 @@ export default function Hero({ backgroundImageDesktop, backgroundImageMobile }: 
               loop
               playsInline
               preload="metadata"
+              aria-label="EFIK Stories logo animation"
             />
           </div>
 
           <div ref={textRef} className="w-full md:flex-1 flex md:justify-start justify-center">
             <img
               src="/HeroText.png"
-              alt="Efik Stories"
+              alt=""
               className="w-[200px] sm:w-[200px] md:w-[280px] lg:w-[280px] h-auto object-contain"
             />
           </div>

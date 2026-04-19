@@ -6,7 +6,7 @@ export default function Intro() {
   const introRef = useFadeIn();
 
   return (
-    <section className="pt-12! pb-0! md:pt-28! px-6! bg-secondary">
+    <section id="intro" className="pt-12! pb-0! md:pt-28! px-6! bg-secondary">
       <div ref={introRef} className="w-full flex flex-col md:flex-row md:items-center md:gap-10 gap-6">
         {/* Text (order changes so the video sits below on mobile) */}
         <p className="order-1 md:order-2 w-full text-lg md:text-3xl max-w-3xl text-foreground leading-relaxed mx-auto md:mx-0 md:ml-auto">
@@ -22,6 +22,8 @@ export default function Intro() {
             autoPlay
             loop
             playsInline
+            preload="metadata"
+            aria-label="EFIK Stories logo animation"
           >
             Your browser does not support the video tag.
           </video>

@@ -162,7 +162,7 @@ export default function ImageGallery({ images = defaultImages }: ImageGalleryPro
   }, []);
 
   return (
-    <section className="py-12! md:pb-18! md:pt-16! px-6! md:px-12! bg-secondary ">
+    <section id="gallery" className="py-12! md:pb-18! md:pt-16! px-6! md:px-12! bg-secondary ">
       <div className="max-w-7xl mx-auto!">
         <div ref={galleryRef} className="w-full! mx-auto!">
           {/* Slideshow Preview */}

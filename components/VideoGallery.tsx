@@ -143,7 +143,7 @@ export default function VideoGallery({ videos = defaultVideos, shorts = defaultS
   };
 
   return (
-    <section className="py-6! md:py-14! px-6 bg-secondary">
+    <section id="videos" className="py-6! md:py-14! px-6 bg-secondary">
       <div className="w-full flex flex-col gap-12 max-w-full md:px-12! px-6! items-center mx-auto overflow-x-hidden">
         {/* Main Episodes Section */}
         <div className="w-full min-w-0">

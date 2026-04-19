@@ -1,22 +1,62 @@
 'use client';
 
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { useFadeIn } from '@/lib/animations';
+
+function getEmailJsConfig() {
+  return {
+    publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY?.trim() ?? '',
+    serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID?.trim() ?? '',
+    templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID?.trim() ?? '',
+  };
+}
 
 export default function CTA() {
   const ctaRef = useFadeIn();
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const emailJsMissing = (() => {
+    const c = getEmailJsConfig();
+    return !c.publicKey || !c.serviceId || !c.templateId;
+  })();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const { publicKey, serviceId, templateId } = getEmailJsConfig();
+
+    if (!publicKey || !serviceId || !templateId) {
+      setStatus('error');
+      return;
+    }
+
     setStatus('submitting');
-    // Replace with your form submission logic (e.g. API route, Formspree, etc.)
-    await new Promise((r) => setTimeout(r, 1000));
-    setStatus('success');
+
+    const fd = new FormData(form);
+    const name = String(fd.get('name') ?? '').trim();
+    const email = String(fd.get('email') ?? '').trim();
+    const interest = String(fd.get('interest') ?? '').trim();
+    const message = String(fd.get('message') ?? '').trim();
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      reply_to: email,
+      interest: interest || '—',
+      message,
+    };
+
+    try {
+      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
+      setStatus('success');
+      form.reset();
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
-    <section className="py-16! md:py-32! md:px-12!  bg-secondary px-6!">
+    <section id="contact" className="py-16! md:py-32! md:px-12!  bg-secondary px-6!">
       <div
         ref={ctaRef}
         className="w-full! flex flex-col lg:flex-row gap-16 lg:gap-24 max-w-[100%] items-stretch lg:justify-between"
@@ -108,7 +148,9 @@ export default function CTA() {
           )}
           {status === 'error' && (
             <p className="mt-8 text-foreground/70">
-              Something went wrong. Please try again.
+              {emailJsMissing
+                ? 'Contact form is not configured yet. Please set EmailJS environment variables.'
+                : 'Something went wrong. Please try again.'}
             </p>
           )}
           <button

@@ -9,6 +9,10 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <h1 className="sr-only">
+        EFIK Stories — visual history of Efik power, memory, and culture through cinematic
+        storytelling
+      </h1>
       <Hero
         backgroundImageDesktop="/HeroDesk.jpeg"
         backgroundImageMobile="/HeroMob.jpeg"

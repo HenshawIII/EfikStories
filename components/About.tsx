@@ -6,7 +6,7 @@ export default function About() {
   const aboutRef = useFadeIn();
 
   return (
-    <section className="py-12! md:px-12! px-6! bg-secondary">
+    <section id="about" className="py-12! md:px-12! px-6! bg-secondary">
       <div
         ref={aboutRef}
         className="w-full max-w-full mx-auto"
